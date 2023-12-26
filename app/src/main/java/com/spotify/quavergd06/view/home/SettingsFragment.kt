@@ -68,7 +68,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             // reiniciar la aplicacion
             restartApplication()
         }
-        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, which ->
+        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, _ ->
             // Usuario hizo clic en No, cerrar el cuadro de diálogo sin hacer nada
             dialog.dismiss()
         }
@@ -82,13 +82,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setTitle(context?.getString(R.string.button_change_theme))
         alertDialogBuilder.setMessage(context?.getString(R.string.change_theme_confirmation_message))
-        alertDialogBuilder.setPositiveButton(context?.getString(R.string.yes)) { dialog, which ->
+        alertDialogBuilder.setPositiveButton(context?.getString(R.string.yes)) { _, _ ->
             ThemeManager.saveThemePreference(requireContext(), selectedTheme)
             ThemeManager.applyTheme(requireContext())
             // reiniciar la aplicacion
             restartApplication()
         }
-        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, which ->
+        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, _ ->
             // Usuario hizo clic en No, cerrar el cuadro de diálogo sin hacer nada
             dialog.dismiss()
         }
@@ -119,7 +119,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setTitle(context?.getString(R.string.button_delete_data))
         alertDialogBuilder.setMessage(context?.getString(R.string.delete_confirmation_message))
-        alertDialogBuilder.setPositiveButton(context?.getString(R.string.yes)) { dialog, which ->
+        alertDialogBuilder.setPositiveButton(context?.getString(R.string.yes)) { _, _ ->
 
             lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
@@ -133,7 +133,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 }
             }
         }
-        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, which ->
+        alertDialogBuilder.setNegativeButton(context?.getString(R.string.no)) { dialog, _ ->
             // Usuario hizo clic en No, cerrar el cuadro de diálogo sin hacer nada
             dialog.dismiss()
         }
